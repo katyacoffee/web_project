@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block pagetitle %}{% endblock %}</title>
+    <!-- load static -->
+    {% load static %}
+    <!-- CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<main>
+    <div class="container">
+        <header class="border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <div class="fs-2 mb-3">
+                    <img src="{% static 'calculator.svg' %}" alt="Проект про математику" width="32" height="32"/>
+                    <span>Проект про математику</span>
+                </div>
+            </a>
+        </header>
+        <div class="p-5 mb-4 bg-light rounded-3" id="title-box">
+            <div class="container-fluid py-5">
+                <h1 class="display-1 fw-bold">{% block page-title %}{% endblock %}</h1>
+                <p class="col-md-8 fs-4">{% block page-lead %}{% endblock %}</p>
+            </div>
+        </div>
+        {% block content %}{% endblock %}
+        <footer class="footer pt-3 mt-4 text-muted border-top">© 2023</footer>
+    </div>
+</main>
+</body>
+</html>

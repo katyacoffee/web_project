@@ -1,0 +1,102 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Математика и её термины
+{% endblock %}
+
+{% block page-lead %}
+Это страничка проекта про изучение математики. <br/>
+Этот проект и его исходный код можно использовать как reference или источник вдохновения для своего проекта.
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="project-contents">
+    <h2 class="pb-2 border-bottom">Что есть в этом проекте</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Список терминов</h3>
+                <p>Простая страница с контентом, который разложен в таблицу. Содержимое таблицы находится в текстовом
+                    файле (если вы уверенно себя чувствуете, замените текстовый файл на базу данных).</p>
+                <a href="/terms-list" class="btn btn-primary">Посмотреть</a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Форма для заполнения термина</h3>
+                <p>Пример POST-запроса, который отправится после того, как вы заполните форму. Он допишет термин в ваш
+                    текстовый файл, и если всё будет успешно — вас перенаправят на страницу терминов</p>
+                <a href="/add-term" class="btn btn-primary">
+                    Заполнить
+                </a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Статистика</h3>
+                <p>Сколько терминов уже есть? Какой они длины?</p>
+                <a href="/stats" class="btn btn-primary">
+                    Изучить
+                </a>
+            </div>
+        </div>
+    </div>
+    <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Добавить ещё одну форму</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Чтобы получить максимальную оценку по проекту, нужно две страницы, которые <span class="fst-italic">показывают</span>
+            контент, а две страницы, которые <span class="fst-italic">принимают</span> контент. Одна страница с
+            POST-запросом создана — это <a href="/add-term">форма сбора терминов</a>. Добавьте ещё одну форму и view, обрабатывающий её!</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Разнообразить контент</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Этот проект — про математику. В условии проекта в курсе — иностранные языки. Измените содержимое страниц,
+                чтобы они были полезны в контексте изучения иностранного языка (несколько примеров есть в описании проекта).</p>
+        </div>
+    </div>
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col-lg-4">
+            <h4 class="py-1">Изменить вёрстку и/или дизайн-систему</h4>
+        </div>
+        <div class="col-lg-8">
+            <p>Этот проект использует <a href="https://getbootstrap.com">Bootstrap</a>. Попробуйте другие дизайн-системы, например:
+                <ul>
+                    <li><a href="https://materializecss.com">Materialize</a></li>
+                    <li><a href="https://semantic-ui.com">Semantic UI</a></li>
+                    <li><a href="https://get.foundation/templates.html">Foundation</a></li>
+                </ul>
+            </p>
+            <p>
+                Если же вам хочется оставить Bootstrap — измените вёрстку! Добавьте картинок, замените стили — словом, пробудите
+                внутреннего художника.
+            </p>
+            <p>
+                <span class="fst-italic">Вариант улучшения:</span> как правило, у сайта есть фавикон — маленькая иконка, отображающаяся
+                рядом с названием сайта во вкладке или окне браузера. Сейчас её нет — но вы можете её добавить.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
