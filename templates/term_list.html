@@ -1,0 +1,34 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Список терминов
+{% endblock %}
+
+{% block page-lead %}
+Все термины извлекаются из БД/файла и динамически вставляются в таблицу.
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="terms-table">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">#</th>
+              <th scope="col" class="py-3">Термин</th>
+              <th scope="col" class="py-3">Описание</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for cnt, term, definition in terms %}
+            <tr>
+                <td class="py-3">{{ cnt }}</td>
+                <td class="py-3">{{ term }}</td>
+                <td class="py-3">{{ definition }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}
