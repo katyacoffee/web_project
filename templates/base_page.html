@@ -1,9 +1,10 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="{% static 'fav_.png' %}" />
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'fav_.png' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'fav_.png' %}" >
     <title>{% block pagetitle %}{% endblock %}</title>
      <!-- CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
