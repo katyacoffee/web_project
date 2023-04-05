@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 from . import views
 
 urlpatterns = [
@@ -22,5 +24,8 @@ urlpatterns = [
     path('terms-list', views.terms_list),
     path('add-term', views.add_term),
     path('send-term', views.send_term),
-    path('stats', views.show_stats)
+    path('stats', views.show_stats),
+    #path("favv.png",
+    #    RedirectView.as_view(url="/static/favv.png", permanent=True),
+    #),
 ]

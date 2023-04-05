@@ -1,11 +1,11 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="{% static 'fav_.png' %}" />
     <title>{% block pagetitle %}{% endblock %}</title>
-    <!-- load static -->
-    {% load static %}
-    <!-- CSS -->
+     <!-- CSS -->
     <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
 </head>
 <body>
@@ -14,8 +14,8 @@
         <header class="border-bottom">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                 <div class="fs-2 mb-3">
-                    <img src="{% static 'Flag.svg' %}" alt="Проект про математику" width="32" height="32"/>
-                    <span>Проект про математику</span>
+                    <img src="{% static 'Flag.svg' %}" alt="Изучение английского языка" width="32" height="32"/>
+                    <span>Изучение английского языка</span>
                 </div>
             </a>
         </header>
