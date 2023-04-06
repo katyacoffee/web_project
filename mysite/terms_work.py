@@ -12,8 +12,8 @@ def get_terms_for_table():
     return terms
 
 
-def write_term(new_term, new_definition):
-    new_card = core.Card(1, 'Library', new_term, new_definition, 'NONE')
+def write_word_with_translation(lesson_id, lesson, word, translation):
+    new_card = core.Card(lesson_id, lesson, word, translation, 'NONE')
     core.add_cards([new_card])
     # new_term_line = f"{new_term};{new_definition};user"
     # with open("./data/terms.csv", "r", encoding="utf-8") as f:

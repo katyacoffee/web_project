@@ -11,3 +11,4 @@
 3|Body|Leg|Нога|pic_leg.png|
 3|Body|Back|Спина|pic_back.png|
 1|Library|Librarian|Библиотекарь|NONE|
+2|Nature|Forest|Лес|NONE|
