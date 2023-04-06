@@ -1,7 +1,11 @@
 {% extends "base_page.html" %}
 
+{% block pagetitle %}
+Add word
+{% endblock %}
+
 {% block page-title %}
-Добавить термин
+Добавить слово
 {% endblock %}
 
 {% block page-lead %}
@@ -28,7 +32,7 @@
             </div>
         </div>
         <div class="row px-5 py-2">
-            <h3>Ваш термин</h3>
+            <h3>Ваше слово</h3>
         </div>
         <div class="row px-5 py-2">
             <div class="col-md-4">
@@ -50,7 +54,7 @@
             </div>
         </div>
         <div class="row px-5 py-2">
-            <button type="submit" class="btn btn-primary" formaction="/send-term">Отправить</button>
+            <button type="submit" class="btn btn-info" formaction="/send-term">Отправить</button>
         </div>
     </form>
 </div>

@@ -16,7 +16,7 @@ Main page
 
 {% block content %}
 <div class="container px-4 py-5" id="project-contents">
-    <h2 class="pb-2 border-bottom">Что есть в этом проекте</h2>
+    <h2 class="pb-2 border-bottom">Меню</h2>
     <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <div class="col d-flex">
             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
@@ -25,9 +25,9 @@ Main page
                 </svg>
             </div>
             <div>
-                <h3 class="fs-2">Список уроков</h3>
-                <p>Простая страница с контентом, который разложен в таблицу. Содержимое таблицы находится в текстовом
-                    файле (если вы уверенно себя чувствуете, замените текстовый файл на базу данных).</p>
+                <h3 class="fs-2">Уроки</h3>
+                <p class="fst-italic">Список уроков, карточки со словами и переводами, общая таблица со всеми словами из карточек. </p>
+                <p class="fst-italic"> Для самопроверки Вы можете пройти тест. </p>
                 <a href="/terms-list" class="btn btn-primary">Посмотреть</a>
             </div>
         </div>
@@ -38,11 +38,10 @@ Main page
                 </svg>
             </div>
             <div>
-                <h3 class="fs-2">Форма для заполнения термина</h3>
-                <p>Пример POST-запроса, который отправится после того, как вы заполните форму. Он допишет термин в ваш
-                    текстовый файл, и если всё будет успешно — вас перенаправят на страницу терминов</p>
+                <h3 class="fs-2">Форма для добавления слова</h3>
+                <p class="fst-italic">Вы можете добавить свое слово, его перевод и иллюстрацию по желанию. </p>
                 <a href="/add-term" class="btn btn-primary">
-                    Заполнить
+                    Добавить
                 </a>
             </div>
         </div>
@@ -54,7 +53,7 @@ Main page
             </div>
             <div>
                 <h3 class="fs-2">Статистика</h3>
-                <p>Сколько терминов уже есть? Какой они длины?</p>
+                <p class="fst-italic">Сколько уроков пройдено и какие баллы за тесты? </p>
                 <a href="/stats" class="btn btn-primary">
                     Изучить
                 </a>
