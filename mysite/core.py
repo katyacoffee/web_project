@@ -31,7 +31,9 @@ def get_cards(lesson_id: int) -> list[Card]:
 
 
 def add_cards(cards: list[Card]) -> None:
-    f = open(file_path, 'w')
+    f = open(file_path, 'a')
+    if len(cards) > 0:
+        f.write('\n')
     for card in cards:
         line = f'{card.lesson_id}' + sep + \
                card.lesson + sep + \
