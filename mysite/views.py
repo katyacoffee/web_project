@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.core.cache import cache
-from . import terms_work
+from . import terms_work, core
 
 
 def index(request):
@@ -10,6 +10,16 @@ def index(request):
 def terms_list(request):
     terms = terms_work.get_terms_for_table()
     return render(request, "term_list.html", context={"terms": terms})
+
+
+def lessons_list(request):
+    words = core.cards_to_tuple(core.get_all_cards())
+    return render(request, "lessons_list.html", context={"words": words})
+
+
+def lessons(request):
+    lessons = core.get_lessons()
+    return render(request, "lessons.html", context={"lessons": lessons})
 
 
 def add_term(request):

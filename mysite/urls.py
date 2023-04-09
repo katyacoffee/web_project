@@ -25,7 +25,6 @@ urlpatterns = [
     path('add-term', views.add_term),
     path('send-term', views.send_term),
     path('stats', views.show_stats),
-    #path("favv.png",
-    #    RedirectView.as_view(url="/static/favv.png", permanent=True),
-    #),
+    path('lessons-list', views.lessons_list),
+    path('lessons', views.lessons),
 ]

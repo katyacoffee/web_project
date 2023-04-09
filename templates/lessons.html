@@ -1,0 +1,38 @@
+{% extends "base_page.html" %}
+
+{% block page-title %}
+Список слов по урокам
+{% endblock %}
+
+{% block page-lead %}
+TODO: ОПИСАНИЕ
+{% endblock %}
+
+{% block content %}
+<div class="container px-4 py-5" id="terms-table">
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th scope="col" class="py-3">Номер урока</th>
+              <th scope="col" class="py-3">Тема урока</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for id, topic in lessons %}
+            <tr>
+                <td class="py-3">{{ id }}</td>
+                <td class="py-3">{{ topic }}</td>
+                <td class="py-3">
+                    TODO: КАРТОЧКИ КНОПКА
+                </td>
+                <td class="py-3">
+                    TODO: ПРОЙТИ ТЕСТ КНОПКА
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+</div>
+{% endblock %}

@@ -25,10 +25,22 @@ Main page
                 </svg>
             </div>
             <div>
+                <h3 class="fs-2">Все карточки</h3>
+                <p class="fst-italic">Общая таблица со всеми словами из карточек. </p>
+                <a href="/lessons-list" class="btn btn-primary">Посмотреть</a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
                 <h3 class="fs-2">Уроки</h3>
-                <p class="fst-italic">Список уроков, карточки со словами и переводами, общая таблица со всеми словами из карточек. </p>
+                <p class="fst-italic">Список уроков, карточки со словами и переводами. </p>
                 <p class="fst-italic"> Для самопроверки Вы можете пройти тест. </p>
-                <a href="/terms-list" class="btn btn-primary">Посмотреть</a>
+                <a href="/lessons" class="btn btn-primary">Посмотреть</a>
             </div>
         </div>
         <div class="col d-flex">
@@ -57,6 +69,37 @@ Main page
                 <a href="/stats" class="btn btn-primary">
                     Изучить
                 </a>
+            </div>
+        </div>
+        <div class="col d-flex">
+            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                <svg class="bi" width="1em" height="1em">
+                    <use xlink:href="#cpu-fill"></use>
+                </svg>
+            </div>
+            <div>
+                <h3 class="fs-2">Тестовая кнопочка</h3>
+                <p class="fst-italic">Жми, чтобы поменять цвет </p>
+                <p><span id="hidden_text" style="color:blue;font-weight:bold">color</span></p>
+                <button id="test_btn" class="btn btn-info">
+                    Перевернуть карточку
+                </button>
+                <script>
+                    var test = false;
+                    const btn = document.getElementById('test_btn');
+                    const txt = document.getElementById('hidden_text');
+                    btn.addEventListener("click", function(){
+                        if (test) {
+                            test = false;
+                            txt.style.color = 'blue';
+                            txt.style.visibility = 'visible';
+                        } else {
+                            test = true;
+                            txt.style.color = 'green';
+                            txt.style.visibility = 'hidden';
+                        }
+                    })
+                </script>
             </div>
         </div>
     </div>
