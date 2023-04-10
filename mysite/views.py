@@ -22,6 +22,18 @@ def lessons(request):
     return render(request, "lessons.html", context={"lessons": lessons})
 
 
+def cards(request):
+    cards = core.get_cards()
+    return render(request, "cards.html")
+# TODO доделать!!!
+
+
+def test(request):
+    test = core.cards_to_tuple(core.get_all_cards())
+    return render(request, "test.html")
+# TODO доделать!!!
+
+
 def add_term(request):
     return render(request, "term_add.html")
 

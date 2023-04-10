@@ -27,4 +27,6 @@ urlpatterns = [
     path('stats', views.show_stats),
     path('lessons-list', views.lessons_list),
     path('lessons', views.lessons),
+    path('cards', views.cards),
+    path('test', views.test),
 ]

@@ -1,40 +1,34 @@
 {% extends "base_page.html" %}
 
+{% block pagetitle %}
+Results
+{% endblock %}
+
 {% block page-title %}
-Статистика по терминам
+<p style="font-size:50px;">Статистика по терминам </p>
 {% endblock %}
 
 {% block page-lead %}
-Перед тем, как отрендерить эту страницу, веб-приложение ходит в файл/БД, обновляет статистики, а затем подставляет их в шаблон страницы.
-Всё это можно посмотреть в файле <code>views.py</code>.
+<p class="fst-italic" style="font-size:25px;">Здесь Вы можете ознакомиться со своими результатами после прохождения тестов </p>
 {% endblock %}
 
 {% block content %}
-<div class="container px-4 py-5" id="stats">
+<div class="container px-3 py-5" id="stats">
     <div>
-        <h3 class="py-2">Количество терминов</h3>
+        <h3 class="px-1">Количество пройденных тестов</h3>
     </div>
-    <div class="row text-center">
-        <div class="col-md-4">
-            <h4>{{ terms_all }}</h4>
-            <p class="text-muted">всего</p>
-        </div>
-        <div class="col-md-4">
-            <h4>{{ terms_own }}</h4>
-            <p class="text-muted">изначально бывших в базе</p>
-        </div>
-        <div class="col-md-4">
+        <div class="row text-center">
             <h4>{{ terms_added }}</h4>
-            <p class="text-muted">добавленных через <a href="/add-term">форму добавления термина</a></p>
+<!--            <p class="text-muted">добавленных через <a href="/add-term">форму добавления термина</a></p>-->
         </div>
     </div>
     <div>
-        <h3 class="py-2">Описания</h3>
+        <h3 class="px-3">Результаты</h3>
     </div>
     <div class="row text-center">
         <div class="col-md-4">
             <h4>{{ words_avg }}</h4>
-            <p class="text-muted">слов в среднем</p>
+            <p class="text-muted">средний балл</p>
         </div>
         <div class="col-sm-4">
             <h4>{{ words_max }}</h4>
