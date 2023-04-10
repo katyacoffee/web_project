@@ -75,20 +75,25 @@ Learn words
             </tr>
           </thead>
           <tbody>
-            {% for id, topic in lessons %}
+            {% for lesson_id, topic in lessons %}
             <tr>
-                <td class="round-bottom">{{ id }}</td>
+                <td class="round-bottom">{{ lesson_id }}</td>
                 <td class="round-bottom">{{ topic }}</td>
                 <td class="round-bottom">
                     <div>
-                        <a href="/cards" class="btn btn-secondary">Карточки</a>
-                        </button>
+                        <a id="cards_button_{{ lesson_id }}" href="/cards"
+                           class="btn btn-secondary">Карточки</a>
+                        <script>
+                            console.warn('got id = {{ lesson_id }}');
+                            document.getElementById('cards_button_{{ lesson_id }}').addEventListener("click", function(){
+                                sessionStorage.setItem('lesson_id', {{ lesson_id }});
+                            })
+                        </script>
                     </div>
                 </td>
                 <td class="py-3">
                     <div>
                         <a href="/cards" class="btn btn-secondary">Тест</a>
-                        </button>
                     </div>
                 </td>
             </tr>

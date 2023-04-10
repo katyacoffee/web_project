@@ -14,4 +14,10 @@ Cards
 {% endblock %}
 
 {% block content %}
+<p id="test_text" style="font-size:25px;"></p>
+<script>
+    const test_text = document.getElementById('test_text');
+    console.warn('lesson_id = ' + sessionStorage.getItem('lesson_id'));
+    test_text.textContent = sessionStorage.getItem('lesson_id');
+</script>
 {% endblock %}
