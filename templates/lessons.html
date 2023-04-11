@@ -13,6 +13,8 @@ Learn words
 {% endblock %}
 
 {% block content %}
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
 <div class="container px-4 py-5" id="terms-table">
     <div class="table-responsive">
         <style>
@@ -81,13 +83,20 @@ Learn words
                 <td class="round-bottom">{{ topic }}</td>
                 <td class="round-bottom">
                     <div>
-                        <a id="cards_button_{{ lesson_id }}" href="/cards"
-                           class="btn btn-secondary">Карточки</a>
+                        <a id="cards_button_{{ lesson_id }}"
+                           class="btn btn-secondary" onclick="passData()">Карточки</a>
                         <script>
-                            console.warn('got id = {{ lesson_id }}');
                             document.getElementById('cards_button_{{ lesson_id }}').addEventListener("click", function(){
                                 sessionStorage.setItem('lesson_id', {{ lesson_id }});
                             })
+                            function passData(){
+                                var id = {{ lesson_id }};
+                                $.ajax({
+                                    type: "POST",
+                                    url: '/cards',
+                                    data: id,
+                                });
+                            }
                         </script>
                     </div>
                 </td>

@@ -17,7 +17,54 @@ Cards
 <p id="test_text" style="font-size:25px;"></p>
 <script>
     const test_text = document.getElementById('test_text');
-    console.warn('lesson_id = ' + sessionStorage.getItem('lesson_id'));
     test_text.textContent = sessionStorage.getItem('lesson_id');
 </script>
+<div class="container px-4 py-5" id="lesson-contents">
+    {% for id, topic, word, translation in words %}
+    <script>
+        console.warn('lesson_id = ' {{ lesson_id }});
+    </script>
+    {% if id == lesson_id %}
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <style>
+                a.card_{{ word }} {
+                    display: inline-block;
+                    height: 100px;
+                    width: 250px;
+                    background: #66CCFF;
+                    transition: all 0.6s;
+                    align-items: center;
+                }
+                a.card_{{ word }}:hover {
+                    background: #99FFCC; /*sets background colour*/
+                }
+                h3.lesson_card {
+                    display: inline-block;
+                    vertical-align: middle;
+                    line-height: normal;
+                }
+        </style>
+        <div id="block_{{ word }}" class="col d-flex">
+            <a class = "card_{{ word }}" id = "card_{{ word }}">
+                <h3 class = "lesson_card" id = "card">{{ word }}</h3>
+            </a>
+        </div>
+        <script>
+                    var visible_{{ word }} = false;
+                    const card_word_{{ word }} = document.getElementById('block_{{ word }}');
+                    const txt_{{ word }} = document.getElementById('card_{{ word }}');
+                    card_word_{{ word }}.addEventListener("click", function(){
+                        if (visible_{{ word }}) {
+                            visible_{{ word }} = false;
+                            txt_{{ word }}.style.visibility = 'visible';
+                        } else {
+                            visible_{{ word }} = true;
+                            txt_{{ word }}.style.visibility = 'hidden';
+                        }
+                    })
+        </script>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
 {% endblock %}

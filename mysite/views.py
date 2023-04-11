@@ -23,8 +23,11 @@ def lessons(request):
 
 
 def cards(request):
-    return render(request, "cards.html", context={})
-# TODO доделать!!!
+    lesson_id = 0
+    if request.method == "POST":
+        lesson_id = request.POST['data']
+    words = core.cards_to_tuple(core.get_all_cards())
+    return render(request, "cards.html", context={"words": words, "lesson_id": lesson_id})
 
 
 def test(request):
