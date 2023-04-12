@@ -14,18 +14,10 @@ Cards
 {% endblock %}
 
 {% block content %}
-<p id="test_text" style="font-size:25px;"></p>
-<script>
-    const test_text = document.getElementById('test_text');
-    test_text.textContent = sessionStorage.getItem('lesson_id');
-</script>
+<p class="test_text" id="test_text" style="font-size:25px;"></p>
 <div class="container px-4 py-5" id="lesson-contents">
     {% for id, topic, word, translation in words %}
-    <script>
-        console.warn('lesson_id = ' {{ lesson_id }});
-    </script>
-    {% if id == lesson_id %}
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div id="card_block_{{ word }}_{{ id }}" class="row g-4 py-5 row-cols-1 row-cols-lg-3">
         <style>
                 a.card_{{ word }} {
                     display: inline-block;
@@ -36,11 +28,15 @@ Cards
                     align-items: center;
                 }
                 a.card_{{ word }}:hover {
-                    background: #99FFCC; /*sets background colour*/
+                    background: #99FFCC;
                 }
                 h3.lesson_card {
-                    display: inline-block;
+                    /*display: inline-block;*/
+                    display: flex;
+                    border-radius: 10px;
                     vertical-align: middle;
+                    align-items: center;
+                    justify-content: center;
                     line-height: normal;
                 }
         </style>
@@ -49,22 +45,60 @@ Cards
                 <h3 class = "lesson_card" id = "card">{{ word }}</h3>
             </a>
         </div>
+        <style>
+                a.card_translation_{{ word }} {
+                    display: none;
+                    height: 100px;
+                    width: 250px;
+                    background: #66CCFF;
+                    transition: all 0.6s;
+                    align-items: center;
+                }
+                a.card_translation_{{ word }}:hover {
+                    background: #99FFCC;
+                }
+                h3.lesson_card {
+                    /*display: inline-block;*/
+                    display: flex;
+                    border-radius: 10px;
+                    vertical-align: middle;
+                    align-items: center;
+                    justify-content: center;
+                    line-height: normal;
+                }
+        </style>
+        <div id="block_translation_{{ word }}" class="col d-flex">
+            <a class = "card_{{ word }}" id = "card_translation_{{ word }}">
+                <h3 class = "lesson_card" id = "card_translation">{{ translation }}</h3>
+            </a>
+        </div>
         <script>
                     var visible_{{ word }} = false;
-                    const card_word_{{ word }} = document.getElementById('block_{{ word }}');
+                    const card_word_{{ word }} = document.getElementById('card_block_{{ word }}_{{ id }}');
                     const txt_{{ word }} = document.getElementById('card_{{ word }}');
+                    const txt_translation_{{ word }} = document.getElementById('card_translation_{{ word }}');
                     card_word_{{ word }}.addEventListener("click", function(){
                         if (visible_{{ word }}) {
                             visible_{{ word }} = false;
-                            txt_{{ word }}.style.visibility = 'visible';
+                            txt_{{ word }}.style.display = 'block';
+                            txt_translation_{{ word }}.style.display = 'none';
                         } else {
                             visible_{{ word }} = true;
-                            txt_{{ word }}.style.visibility = 'hidden';
+                            txt_{{ word }}.style.display = 'none';
+                            txt_translation_{{ word }}.style.display = 'block';
                         }
                     })
         </script>
     </div>
-    {% endif %}
     {% endfor %}
+    <script>
+        var name = 'card_block_{{ word }}_{{ id }}'
+        {% for id, topic, word, translation in words %}
+        const card_block_{{ word }}_{{ id }} = document.getElementById('card_block_{{ word }}_{{ id }}');
+        if ({{ id }} != sessionStorage.getItem('lesson_id')){
+            card_block_{{ word }}_{{ id }}.style.display = 'none';
+        }
+        {% endfor %}
+    </script>
 </div>
 {% endblock %}

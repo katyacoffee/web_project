@@ -83,26 +83,18 @@ Learn words
                 <td class="round-bottom">{{ topic }}</td>
                 <td class="round-bottom">
                     <div>
-                        <a id="cards_button_{{ lesson_id }}"
-                           class="btn btn-secondary" onclick="passData()">Карточки</a>
+                        <a id="cards_button_{{ lesson_id }}" href="/cards"
+                           class="btn btn-secondary">Карточки</a>
                         <script>
                             document.getElementById('cards_button_{{ lesson_id }}').addEventListener("click", function(){
                                 sessionStorage.setItem('lesson_id', {{ lesson_id }});
                             })
-                            function passData(){
-                                var id = {{ lesson_id }};
-                                $.ajax({
-                                    type: "POST",
-                                    url: '/cards',
-                                    data: id,
-                                });
-                            }
                         </script>
                     </div>
                 </td>
                 <td class="py-3">
                     <div>
-                        <a href="/cards" class="btn btn-secondary">Тест</a>
+                        <a href="/test" class="btn btn-secondary">Тест</a>
                     </div>
                 </td>
             </tr>
