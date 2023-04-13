@@ -23,7 +23,7 @@ def lessons(request):
 
 
 def cards(request):
-    words = core.cards_to_tuple(core.get_all_cards())
+    words = core.cards_to_tuple_with_pics(core.get_all_cards())
     return render(request, "cards.html", context={"words": words})
 
 

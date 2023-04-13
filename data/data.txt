@@ -1,4 +1,4 @@
-1|Library|Book|Книга|pic_book.png|
+1|Library|Book|Книга|Flag.svg|
 1|Library|Library|Библиотека|pic_library.png|
 1|Library|Bookshelf|Книжная полка|pic_bookshelf.png|
 1|Library|Paragraph|Параграф, глава|NONE|

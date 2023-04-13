@@ -50,6 +50,16 @@ def cards_to_tuple(cards: list[Card]):
     return res
 
 
+def cards_to_tuple_with_pics(cards: list[Card]):
+    res = []
+    for card in cards:
+        pic = ""  # TODO: picture with 'no data'
+        if card.pic_name != "NONE":
+            pic = card.pic_name
+        res.append([card.lesson_id, card.lesson, card.word, card.translation, pic])
+    return res
+
+
 def add_cards(cards: list[Card]) -> None:
     f = open(file_path, 'a')
     if len(cards) > 0:

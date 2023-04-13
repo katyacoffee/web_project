@@ -20,7 +20,7 @@ Cards
     num_lesson.textContent = 'Урок №' + sessionStorage.getItem('lesson_id');
 </script>
 <div class="container px-4 py-5" id="lesson-contents">
-    {% for id, topic, word, translation in words %}
+    {% for id, topic, word, translation, pic in words %}
     <style>
          div.card_block_{{ word }}_{{ id }} {
             position: absolute;
@@ -32,8 +32,8 @@ Cards
                 a.card_{{ word }} {
                     display: inline-block;
                     border-radius: 30px;
-                    height: 200px;
-                    width: 350px;
+                    height: 400px;
+                    width: 650px;
                     left: 50%;
                     transform: translateX(50%);
                     background: #63a9db;
@@ -54,12 +54,13 @@ Cards
                     align-items: center;
                     justify-content: center;
                     top: 50%;
-                    transform: translateY(225%);
+                    transform: translateY(300%);
                     line-height: normal;
+                    font-size: 40px;
                 }
         </style>
         <div id="block_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
-            <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; color:white; vertical-align: middle;">
+            <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; color:white; vertical-align: middle; ">
                 <h3 class = "lesson_card" id = "card">{{ word }}</h3>
             </a>
         </div>
@@ -67,8 +68,8 @@ Cards
                 a.card_translation_{{ word }} {
                     display: none;
                     border-radius: 30px;
-                    height: 200px;
-                    width: 350px;
+                    height: 400px;
+                    width: 650px;
                     background: #63a9db;
                     left: 50%;
                     transform: translateX(50%);
@@ -91,11 +92,16 @@ Cards
                     transform: translateY(50%);
                     justify-content: center;
                     line-height: normal;
+                    font-size: 40px;
                 }
         </style>
         <div id="block_translation_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
             <a class = "card_translation_{{ word }}" id = "card_translation_{{ word }}" style="text-decoration:none; color:white">
                 <h3 class = "lesson_card_" id = "card_translation">{{ translation }}</h3>
+                <picture>
+                    <img src="/static/{{ pic }}" alt="" width="300" height="150" style="object-position=center; margin: auto;
+                    position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+                </picture>
             </a>
         </div>
     </div>
@@ -129,7 +135,7 @@ Cards
     {% endfor %}
     <script>
         var name = 'card_block_{{ word }}_{{ id }}'
-        {% for id, topic, word, translation in words %}
+        {% for id, topic, word, translation, pic in words %}
         const card_block_{{ word }}_{{ id }} = document.getElementById('card_block_{{ word }}_{{ id }}');
         if ({{ id }} != sessionStorage.getItem('lesson_id')){
             card_block_{{ word }}_{{ id }}.style.display = 'none';
