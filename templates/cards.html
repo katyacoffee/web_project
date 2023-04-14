@@ -27,7 +27,7 @@ Cards
             left: 50%;
          }
     </style>
-    <div id="card_block_{{ word }}_{{ id }}" class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div id="card_block_{{ word }}_{{ id }}" class="row g-1 py-5 row-cols-1 row-cols-lg-3">
         <style>
                 a.card_{{ word }} {
                     display: inline-block;
@@ -38,6 +38,7 @@ Cards
                     transform: translateX(50%);
                     background: #63a9db;
                     transition: all 0.6s;
+                    animation-duration: 0.5s;
                     align-items: center;
                 }
                 a.card_{{ word }}:hover {
@@ -48,6 +49,7 @@ Cards
                 h3.lesson_card {
                     /*display: inline-block;*/
                     display: flex;
+                    flex-shrink: 0;
                     left: 50%;
                     border-radius: 30px;
                     vertical-align: middle;
@@ -74,6 +76,7 @@ Cards
                     left: 50%;
                     transform: translateX(50%);
                     transition: all 0.6s;
+                    animation-duration: 0.5s;
                     align-items: center;
                 }
                 a.card_translation_{{ word }}:hover {
@@ -85,6 +88,7 @@ Cards
                 h3.lesson_card_ {
                     /*display: inline-block;*/
                     display: flex;
+                    flex-shrink: 0;
                     border-radius: 30px;
                     vertical-align: middle;
                     align-items: center;
@@ -99,7 +103,7 @@ Cards
             <a class = "card_translation_{{ word }}" id = "card_translation_{{ word }}" style="text-decoration:none; color:white">
                 <h3 class = "lesson_card_" id = "card_translation">{{ translation }}</h3>
                 <picture>
-                    <img src="/static/{{ pic }}" alt="" width="300" height="150" style="object-position=center; margin: auto;
+                    <img src="/static/{{ pic }}" alt="" width="300" height="200" style="object-position=center; margin: auto; flex-shrink: 0;
                     position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
                 </picture>
             </a>

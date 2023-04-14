@@ -1,14 +1,15 @@
-1|Library|Book|Книга|Flag.svg|
+1|Library|Book|Книга|Book.jpg|
 1|Library|Library|Библиотека|pic_library.png|
 1|Library|Bookshelf|Книжная полка|pic_bookshelf.png|
 1|Library|Paragraph|Параграф, глава|NONE|
-2|Nature|Tree|Дерево|pic_tree.png|
-2|Nature|Flower|Цветок|pic_flower.png|
-2|Nature|Lake|Озеро|pic_lake.png|
-2|Nature|Sky|Небо|pic_sky.png|
+2|Nature|Tree|Дерево|pic_tree.jpg|
+2|Nature|Flower|Цветок|pic_flower.jpg|
+2|Nature|Lake|Озеро|pic_lake.jpg|
+2|Nature|Sky|Небо|pic_sky.jpg|
 3|Body|Head|Голова|pic_head.png|
-3|Body|Hand|Рука|pic_hand.png|
-3|Body|Leg|Нога|pic_leg.png|
+3|Body|Hand|Рука|pic_hand.jpg|
+3|Body|Leg|Нога|pic_leg.jpg|
 3|Body|Back|Спина|pic_back.png|
-1|Library|Librarian|Библиотекарь|NONE|
-2|Nature|Forest|Лес|NONE|
+1|Library|Librarian|Библиотекарь|pic_librarian.jpg|
+2|Nature|Forest|Лес|pic_forest.jpg|
+3|Body|нос|nose|NONE|
