@@ -12,4 +12,5 @@
 3|Body|Back|Спина|pic_back.png|
 1|Library|Librarian|Библиотекарь|pic_librarian.jpg|
 2|Nature|Forest|Лес|pic_forest.jpg|
-3|Body|нос|nose|NONE|
+3|Body|Nose|Нос|NONE|
+2|Nature|Sea|Море|NONE|

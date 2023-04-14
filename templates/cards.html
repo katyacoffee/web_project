@@ -15,19 +15,22 @@ Cards
 
 {% block content %}
 <p id = "Number" class = "Number" style="font-size:50px; font-family: Georgia;"></p>
+<a href="/lessons" class="btn btn-primary">К списку уроков</a>
 <script>
     const num_lesson = document.getElementById('Number');
     num_lesson.textContent = 'Урок №' + sessionStorage.getItem('lesson_id');
 </script>
-<div class="container px-4 py-5" id="lesson-contents">
+<div class="container bs-docs-container" id="lesson-contents">
     {% for id, topic, word, translation, pic in words %}
     <style>
-         div.card_block_{{ word }}_{{ id }} {
-            position: absolute;
-            left: 50%;
+         div.block_{{ word }} {
+            //position: absolute;
+            //left: 50%;
+            height: 400px;
+            width: 650px;
          }
     </style>
-    <div id="card_block_{{ word }}_{{ id }}" class="row g-1 py-5 row-cols-1 row-cols-lg-3">
+    <div id="card_block_{{ word }}_{{ id }}" class="p-1 mb-1">
         <style>
                 a.card_{{ word }} {
                     display: inline-block;
@@ -138,7 +141,6 @@ Cards
     </script>
     {% endfor %}
     <script>
-        var name = 'card_block_{{ word }}_{{ id }}'
         {% for id, topic, word, translation, pic in words %}
         const card_block_{{ word }}_{{ id }} = document.getElementById('card_block_{{ word }}_{{ id }}');
         if ({{ id }} != sessionStorage.getItem('lesson_id')){

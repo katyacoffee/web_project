@@ -94,7 +94,12 @@ Learn words
                 </td>
                 <td class="py-3">
                     <div>
-                        <a href="/test" class="btn btn-secondary">Тест</a>
+                        <a id="test_button_{{ lesson_id }}" href="/test" class="btn btn-secondary">Тест</a>
+                        <script>
+                            document.getElementById('test_button_{{ lesson_id }}').addEventListener("click", function(){
+                                sessionStorage.setItem('lesson_id', {{ lesson_id }});
+                            })
+                        </script>
                     </div>
                 </td>
             </tr>

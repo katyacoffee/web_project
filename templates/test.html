@@ -14,4 +14,43 @@ Take the test
 {% endblock %}
 
 {% block content %}
+<p id = "Number" class = "Number" style="font-size:50px; font-family: Georgia;"></p>
+<a href="/lessons" class="btn btn-primary">К списку уроков</a>
+<h4>Введите слова, соответствующие переводам, а затем нажмите "Отправить ответы"</h4>
+<script>
+    const num_lesson = document.getElementById('Number');
+    num_lesson.textContent = 'Тест к уроку №' + sessionStorage.getItem('lesson_id');
+</script>
+<div class="container px-4 py-5" id="test-contents">
+    <form method="post">
+        {% for id, topic, word, translation in words %}
+        <div id="test_block_{{ word }}_{{ id }}" class="row g-1 py-5 row-cols-1 row-cols-lg-3">
+            <div id="block_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
+                <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; vertical-align: middle; ">
+                    <h3 class = "lesson_card" id = "card">{{ translation }}</h3>
+                </a>
+            </div>
+            <div id="insert_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
+                 <input type="text" class="form-control input-lg" name="answer_{{ word }}" id="answer_{{ word }}" placeholder="Введите слово">
+            </div>
+        </div>
+        {% endfor %}
+        <script>
+            {% for id, topic, word, translation in words %}
+            const test_block_{{ word }}_{{ id }} = document.getElementById('test_block_{{ word }}_{{ id }}');
+            if ({{ id }} != sessionStorage.getItem('lesson_id')){
+                test_block_{{ word }}_{{ id }}.style.display = 'none';
+            }
+            {% endfor %}
+        </script>
+        <input type="hidden" id="lesson_id" name="lesson_id" value="">
+        <script>
+            const lesson_id_sender = document.getElementById('lesson_id');
+            lesson_id_sender.value = sessionStorage.getItem('lesson_id');
+        </script>
+        <div class="row px-5 py-2">
+            <button type="submit" class="btn btn-info" formaction="/send-answers">Отправить ответы</button>
+        </div>
+    </form>
+</div>
 {% endblock %}

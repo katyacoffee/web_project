@@ -28,8 +28,8 @@ def cards(request):
 
 
 def test(request):
-    return render(request, "test.html", context={})
-# TODO доделать!!!
+    words = core.cards_to_tuple(core.get_all_cards())
+    return render(request, "test.html", context={"words": words})
 
 
 def add_term(request):
@@ -64,6 +64,36 @@ def send_term(request):
         if context["success"]:
             context["success-title"] = ""
         return render(request, "term_request.html", context)
+    else:
+        add_term(request)
+
+
+def send_answers(request):
+    if request.method == "POST":
+        cache.clear()
+        lesson_id = request.POST.get("lesson_id")
+        # user_name = request.POST.get("name")
+        user_name = "admin"
+        context = {"user": user_name, "lesson_id": lesson_id}
+        cards_for_lesson = core.get_cards(int(lesson_id))
+        context["success"] = True
+        points = 0
+        for card in cards_for_lesson:
+            answer = request.POST.get("answer_" + card.word)
+            if len(answer) == 0:
+                context["success"] = False
+                context["comment"] = "Слово должно быть не пустым. Вы забыли перевод '" +\
+                                     card.translation + "'."
+                break
+            elif answer.lower() == card.word.lower():
+                points += 1
+        if context["success"]:
+            context["success-title"] = "Тест успешно заполнен"
+            context["comment"] = "Тест пройден с результатом " +\
+                                 f'{points}/{len(cards_for_lesson)}'
+
+
+        return render(request, "test_request.html", context)
     else:
         add_term(request)
 

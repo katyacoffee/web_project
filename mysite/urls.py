@@ -29,4 +29,5 @@ urlpatterns = [
     path('lessons', views.lessons),
     path('cards', views.cards),
     path('test', views.test),
+    path('send-answers', views.send_answers),
 ]
