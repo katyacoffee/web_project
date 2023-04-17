@@ -1,22 +1,25 @@
-{% extends "base_page.html" %}
+{% extends "with_login.html" %}
 
 {% block pagetitle %}
 Take the test
 {% endblock %}
 
 {% block page-title %}
-<p style="font-size:50px;">Тестирование </p>
+<p style="font-size:50px; font-family: Bookman;">Тестирование </p>
 {% endblock %}
 
 {% block page-lead %}
 <!--Список всех уроков, слов и их переводов-->
-<p class="fst-italic" style="font-size:25px; ">Для самопроверки Вы можете пройти тест </p>
+<p class="fst-italic" style="font-size:25px; font-family: Bookman;">Для самопроверки Вы можете пройти тест </p>
 {% endblock %}
 
 {% block content %}
-<p id = "Number" class = "Number" style="font-size:50px; font-family: Georgia;"></p>
-<a href="/lessons" class="btn btn-primary">К списку уроков</a>
-<h4>Введите слова, соответствующие переводам, а затем нажмите "Отправить ответы"</h4>
+<p id = "Number" class = "Number" style="font-size:40px; font-family: Bookman;"></p>
+<a href="/lessons" class="btn btn-light" style="background-color: #E8DAEF; color: black; font-family: Bookman;">К списку уроков</a>
+<br /> <br />
+<h4 style="font-family: Bookman;">Введите слова, соответствующие переводам, а затем нажмите "Отправить ответы"</h4>
+<br /> <br />
+<br /> <br />
 <script>
     const num_lesson = document.getElementById('Number');
     num_lesson.textContent = 'Тест к уроку №' + sessionStorage.getItem('lesson_id');
@@ -26,7 +29,7 @@ Take the test
         {% for id, topic, word, translation in words %}
         <div id="test_block_{{ word }}_{{ id }}" class="row g-1 py-5 row-cols-1 row-cols-lg-3">
             <div id="block_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
-                <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; vertical-align: middle; ">
+                <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; vertical-align: middle; color: black ">
                     <h3 class = "lesson_card" id = "card">{{ translation }}</h3>
                 </a>
             </div>
@@ -49,7 +52,7 @@ Take the test
             lesson_id_sender.value = sessionStorage.getItem('lesson_id');
         </script>
         <div class="row px-5 py-2">
-            <button type="submit" class="btn btn-info" formaction="/send-answers">Отправить ответы</button>
+            <button type="submit" class="btn btn-info" formaction="/send-answers" style="font-family: Bookman;">Отправить ответы</button>
         </div>
     </form>
 </div>

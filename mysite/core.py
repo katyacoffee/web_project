@@ -14,11 +14,13 @@ class Card:
 no_pic = 'NONE'
 sep = '|'
 # TODO: fix to relpath
-file_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/data.txt'
+data_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/data.txt'
+res_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/results.txt'
+users_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/users.txt'
 
 
 def get_cards(lesson_id: int) -> list[Card]:
-    f = open(file_path, 'r')
+    f = open(data_path, 'r')
     res = []
     for line in f:
         line_data = line.split(sep)
@@ -61,7 +63,7 @@ def cards_to_tuple_with_pics(cards: list[Card]):
 
 
 def add_cards(cards: list[Card]) -> None:
-    f = open(file_path, 'a')
+    f = open(data_path, 'a')
     if len(cards) > 0:
         f.write('\n')
     for card in cards:
@@ -83,3 +85,35 @@ def get_lessons():
         res.append([data[0].lesson_id, data[0].lesson])
         i += 1
     return res
+
+
+def get_users() -> {str: str}:
+    f = open(users_path, 'r')
+    res = {}
+    for line in f:
+        line_data = line.split(sep)
+        if len(line_data) != 2:
+            continue
+        res[line_data[0]] = line_data[1]
+    return res
+
+
+def get_password(user: str) -> str | None:
+    user_passes = get_users()
+    if user not in user_passes:
+        return None
+    return user_passes[user]
+
+
+# def add_result():
+#     f = open(res_path, 'r')
+#     result = []
+#     for line in f:
+#         line_result = line.split(sep)
+#         if len(line_result) < 5:
+#             continue
+#         i = int(line_result[0])
+#         if i != lesson_id:
+#             continue
+#         result.append(email, Card(i+1, line_result[1], line_result[2], line_result[3], line_result[4]))
+#     return result

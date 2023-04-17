@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.core.cache import cache
+from django.http import HttpResponse
 from . import terms_work, core
+import json
 
 
 def index(request):
@@ -92,10 +94,24 @@ def send_answers(request):
             context["comment"] = "Тест пройден с результатом " +\
                                  f'{points}/{len(cards_for_lesson)}'
 
-
         return render(request, "test_request.html", context)
     else:
         add_term(request)
+
+
+def submit_login(request):
+    data = json.loads(request.body)
+    user = data['title']
+    pwd = data['body']
+    print(user, pwd)
+    correct_pwd = core.get_password(user)
+    if correct_pwd is None:
+        print("USER NOT FOUND")
+    elif correct_pwd != pwd:
+        print("INCORRECT PASSWORD")
+    else:
+        print("LOGIN SUCCEEDED")
+    return HttpResponse("QWERTY")
 
 
 def show_stats(request):

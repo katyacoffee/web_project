@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'fav_.png' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'fav_.png' %}" >
+    <title>{% block pagetitle %}{% endblock %}</title>
+     <!-- CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<main>
+    <div class="container">
+        <header class="border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <div class="fs-2 mb-3">
+                    <img src="{% static 'Flag.svg' %}" alt="Изучение английского языка" width="32" height="32"/>
+                    <span>Изучение английского языка</span>
+                </div>
+            </a>
+        </header>
+        <div class="p-5 mb-4 bg-light rounded-3" id="title-box">
+            <div class="container-fluid py-5">
+                <h1 class="display-1 fw-bold">{% block page-title %}{% endblock %}</h1>
+                <p class="col-md-8 fs-4">{% block page-lead %}{% endblock %}</p>
+            </div>
+        </div>
+        <form method="post">
+            <h3 style="font-family: Bookman;">Ваши контактные данные</h3>
+            <div class="row px-5 py-2">
+                <div class="col-md-6">
+                    <label for="login" style="font-family: Bookman;">Логин:</label>
+                    <input type="text" class="form-control input-lg" name="login" id="login" placeholder="ivan111" value required>
+                </div>
+                <div class="col-md-6">
+                    <label for="password">Пароль:</label>
+                    <input type="password" class="form-control input-lg" name="password" id="password" maxlength="20" placeholder="********" value required>
+                </div>
+            </div>
+            <div class="row px-5 py-2">
+                <button id="send-pwd" type="submit" class="btn btn-info" style="font-family: Bookman;">
+                    Sign in
+                </button>
+                <script>
+                    const button = document.getElementById('send-pwd');
+
+                    button.addEventListener('click', async _ => {
+                      try {
+                        var login=document.getElementById('login').value;
+                        var pwd=document.getElementById('password').value;
+                        const response = await fetch('submit-login', {
+                          method: 'post',
+                          body: JSON.stringify({
+                            title: login,
+                            body: pwd,
+                          })
+                        });
+                        console.log('Completed!', response);
+                        alert(response.content)
+                      } catch(err) {
+                        console.error(`Error: ${err}`);
+                        alert('Unknown server error')
+                      }
+                    });
+                </script>
+            </div>
+        </form>
+        <br /> <br />
+        {% block content %}{% endblock %}
+        <footer class="footer pt-3 mt-4 text-muted border-top">© 2023</footer>
+    </div>
+</main>
+</body>
+</html>

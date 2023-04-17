@@ -17,7 +17,7 @@ Main page
 {% block content %}
 <div class="container px-4 py-5" id="project-contents">
     <h2 class="pb-2 border-bottom">Меню</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
         <div class="col d-flex">
             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                 <svg class="bi" width="1em" height="1em">
@@ -77,46 +77,46 @@ Main page
                     <use xlink:href="#cpu-fill"></use>
                 </svg>
             </div>
-            <div>
-                <h3 class="fs-2">Тестовая кнопочка</h3>
-                <p class="fst-italic">Жми, чтобы поменять цвет </p>
-                <p><span id="hidden_text" style="color:blue;font-weight:bold">color</span></p>
-                <button id="test_btn" class="btn btn-info">
-                    Перевернуть карточку
-                </button>
-                <script>
-                    var test = false;
-                    const btn = document.getElementById('test_btn');
-                    const txt = document.getElementById('hidden_text');
-                    btn.addEventListener("click", function(){
-                        if (test) {
-                            test = false;
-                            txt.style.color = 'blue';
-                            txt.style.visibility = 'visible';
-                        } else {
-                            test = true;
-                            txt.style.color = 'green';
-                            txt.style.visibility = 'hidden';
-                        }
-                    })
-                </script>
-            </div>
+<!--            <div>-->
+<!--                <h3 class="fs-2">Тестовая кнопочка</h3>-->
+<!--                <p class="fst-italic">Жми, чтобы поменять цвет </p>-->
+<!--                <p><span id="hidden_text" style="color:blue;font-weight:bold">color</span></p>-->
+<!--                <button id="test_btn" class="btn btn-info">-->
+<!--                    Перевернуть карточку-->
+<!--                </button>-->
+<!--                <script>-->
+<!--                    var test = false;-->
+<!--                    const btn = document.getElementById('test_btn');-->
+<!--                    const txt = document.getElementById('hidden_text');-->
+<!--                    btn.addEventListener("click", function(){-->
+<!--                        if (test) {-->
+<!--                            test = false;-->
+<!--                            txt.style.color = 'blue';-->
+<!--                            txt.style.visibility = 'visible';-->
+<!--                        } else {-->
+<!--                            test = true;-->
+<!--                            txt.style.color = 'green';-->
+<!--                            txt.style.visibility = 'hidden';-->
+<!--                        }-->
+<!--                    })-->
+<!--                </script>-->
+<!--            </div>-->
         </div>
     </div>
-    <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>
-    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
-        <div class="col-lg-4">
-            <h4 class="py-1">Изменить вёрстку и/или дизайн-систему</h4>
-        </div>
-        <div class="col-lg-8">
-            <p>Этот проект использует <a href="https://getbootstrap.com">Bootstrap</a>. Попробуйте другие дизайн-системы, например:
-                <ul>
-                    <li><a href="https://materializecss.com">Materialize</a></li>
-                    <li><a href="https://semantic-ui.com">Semantic UI</a></li>
-                    <li><a href="https://get.foundation/templates.html">Foundation</a></li>
-                </ul>
-            </p>
-        </div>
-    </div>
+<!--    <h2 class="pb-2 border-bottom">Что можете сделать вы?</h2>-->
+<!--    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">-->
+<!--        <div class="col-lg-4">-->
+<!--            <h4 class="py-1">Изменить вёрстку и/или дизайн-систему</h4>-->
+<!--        </div>-->
+<!--        <div class="col-lg-8">-->
+<!--            <p>Этот проект использует <a href="https://getbootstrap.com">Bootstrap</a>. Попробуйте другие дизайн-системы, например:-->
+<!--                <ul>-->
+<!--                    <li><a href="https://materializecss.com">Materialize</a></li>-->
+<!--                    <li><a href="https://semantic-ui.com">Semantic UI</a></li>-->
+<!--                    <li><a href="https://get.foundation/templates.html">Foundation</a></li>-->
+<!--                </ul>-->
+<!--            </p>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 {% endblock %}
