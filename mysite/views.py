@@ -74,8 +74,9 @@ def send_answers(request):
     if request.method == "POST":
         cache.clear()
         lesson_id = request.POST.get("lesson_id")
-        # user_name = request.POST.get("name")
-        user_name = "admin"
+        user_name = request.POST.get("user_login")
+        if user_name == "":
+            user_name = "unknown guest"
         context = {"user": user_name, "lesson_id": lesson_id}
         cards_for_lesson = core.get_cards(int(lesson_id))
         context["success"] = True
@@ -103,15 +104,16 @@ def submit_login(request):
     data = json.loads(request.body)
     user = data['title']
     pwd = data['body']
+    if user == "":
+        return HttpResponse("Имя пользователя не заполнено.")
     print(user, pwd)
     correct_pwd = core.get_password(user)
     if correct_pwd is None:
-        print("USER NOT FOUND")
+        return HttpResponse("Пользователь '" + user +
+                            "' не найден. Пожалуйста, зарегистрируйтесь.")
     elif correct_pwd != pwd:
-        print("INCORRECT PASSWORD")
-    else:
-        print("LOGIN SUCCEEDED")
-    return HttpResponse("QWERTY")
+        return HttpResponse("Неверный пароль для пользователя '" + user + "'!")
+    return HttpResponse("TRUE")
 
 
 def show_stats(request):

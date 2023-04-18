@@ -49,15 +49,19 @@
                       try {
                         var login=document.getElementById('login').value;
                         var pwd=document.getElementById('password').value;
-                        const response = await fetch('submit-login', {
+                        let response = await fetch('submit-login', {
                           method: 'post',
                           body: JSON.stringify({
                             title: login,
                             body: pwd,
                           })
                         });
-                        console.log('Completed!', response);
-                        alert(response.content)
+                        let text = await response.text();
+                        if (text == "TRUE") {
+                            sessionStorage.setItem('user_login', login);
+                            text = "Успешный вход для '" + login + "'."
+                        }
+                        alert(text)
                       } catch(err) {
                         console.error(`Error: ${err}`);
                         alert('Unknown server error')

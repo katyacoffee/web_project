@@ -47,9 +47,14 @@ Take the test
             {% endfor %}
         </script>
         <input type="hidden" id="lesson_id" name="lesson_id" value="">
+        <input type="hidden" id="user_login" name="user_login" value="">
         <script>
             const lesson_id_sender = document.getElementById('lesson_id');
             lesson_id_sender.value = sessionStorage.getItem('lesson_id');
+            const user = sessionStorage.getItem('user_login')
+            const user_login = document.getElementById('user_login');
+            user_login.value = user;
+            sessionStorage.setItem('user_login', '')
         </script>
         <div class="row px-5 py-2">
             <button type="submit" class="btn btn-info" formaction="/send-answers" style="font-family: Bookman;">Отправить ответы</button>
