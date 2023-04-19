@@ -90,7 +90,8 @@ def get_lessons():
 def get_users() -> {str: str}:
     f = open(users_path, 'r')
     res = {}
-    for line in f:
+    lines = f.read().splitlines()
+    for line in lines:
         line_data = line.split(sep)
         if len(line_data) != 2:
             continue
@@ -105,15 +106,50 @@ def get_password(user: str) -> str | None:
     return user_passes[user]
 
 
-# def add_result():
-#     f = open(res_path, 'r')
-#     result = []
-#     for line in f:
-#         line_result = line.split(sep)
-#         if len(line_result) < 5:
-#             continue
-#         i = int(line_result[0])
-#         if i != lesson_id:
-#             continue
-#         result.append(email, Card(i+1, line_result[1], line_result[2], line_result[3], line_result[4]))
-#     return result
+def get_all_results() -> {str: list[float]}:
+    f = open(res_path, 'r')
+    res = {}
+    lines = f.read().splitlines()
+    for line in lines:
+        line_data = line.split(sep)
+        if len(line_data) < 2:
+            continue
+        results = []
+        for i, r in enumerate(line_data):
+            if i == 0:
+                continue
+            try:
+                r = float(r)
+            except ValueError:
+                r = 0.0
+            results.append(r)
+        res[line_data[0]] = results
+    return res
+
+
+def add_result(user: str, lesson_id: int, points: float):
+    all_results = get_all_results()
+    if user not in all_results.keys():
+        user_results = []
+        for _ in [1, lesson_id]:
+            user_results.append(0.0)
+        user_results.append(points)
+        all_results[user] = user_results
+    else:
+        user_results = all_results[user]
+        user_results[lesson_id-1] = points
+        all_results[user] = user_results
+
+    f = open(res_path, 'w')
+    for u in all_results.keys():
+        f.write(make_str_of_results(u, all_results[u]))
+    f.close()
+
+
+def make_str_of_results(user: str, results: list[float]) -> str:
+    res = user
+    for r in results:
+        res += f'|{r}'
+    res += '\n'
+    return res
+

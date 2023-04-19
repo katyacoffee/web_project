@@ -5,6 +5,9 @@ from . import terms_work, core
 import json
 
 
+unknown_guest = "unknown guest"
+
+
 def index(request):
     return render(request, "index.html")
 
@@ -76,25 +79,26 @@ def send_answers(request):
         lesson_id = request.POST.get("lesson_id")
         user_name = request.POST.get("user_login")
         if user_name == "":
-            user_name = "unknown guest"
+            user_name = unknown_guest
         context = {"user": user_name, "lesson_id": lesson_id}
         cards_for_lesson = core.get_cards(int(lesson_id))
         context["success"] = True
         points = 0
         for card in cards_for_lesson:
             answer = request.POST.get("answer_" + card.word)
-            if len(answer) == 0:
-                context["success"] = False
-                context["comment"] = "Слово должно быть не пустым. Вы забыли перевод '" +\
-                                     card.translation + "'."
-                break
-            elif answer.lower() == card.word.lower():
+            # if len(answer) == 0:
+            #     context["success"] = False
+            #     context["comment"] = "Слово должно быть не пустым. Вы забыли перевод '" +\
+            #                          card.translation + "'."
+            #     break
+            if answer.lower() == card.word.lower():
                 points += 1
         if context["success"]:
             context["success-title"] = "Тест успешно заполнен"
             context["comment"] = "Тест пройден с результатом " +\
                                  f'{points}/{len(cards_for_lesson)}'
-
+            if user_name is not unknown_guest:
+                core.add_result(user_name, int(lesson_id), points/len(cards_for_lesson))
         return render(request, "test_request.html", context)
     else:
         add_term(request)
