@@ -121,5 +121,5 @@ def submit_login(request):
 
 
 def show_stats(request):
-    stats = terms_work.get_terms_stats()
-    return render(request, "stats.html", stats)
+    all_res = core.get_all_stats()
+    return render(request, "stats.html", context={"results": all_res})

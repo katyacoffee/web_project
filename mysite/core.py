@@ -127,6 +127,29 @@ def get_all_results() -> {str: list[float]}:
     return res
 
 
+def get_all_results_int_percent() -> {str: list[int]}:
+    all_res = get_all_results()
+    res = {}
+    for user in all_res.keys():
+        int_res = []
+        for value in all_res[user]:
+            int_res.append(int(value*100))
+        res[user] = int_res
+    return res
+
+
+def get_all_stats():
+    all_res = get_all_results_int_percent()
+    res = []
+    for user in all_res.keys():
+        user_res = all_res[user]
+        if len(user_res) == 0:
+            continue
+        res.append([user, sum(user_res), sum(user_res)//len(user_res),
+                    max(user_res), min(user_res)])
+    return res
+
+
 def add_result(user: str, lesson_id: int, points: float):
     all_results = get_all_results()
     if user not in all_results.keys():

@@ -1,4 +1,4 @@
-{% extends "base_page.html" %}
+{% extends "with_login.html" %}
 
 {% block pagetitle %}
 Results
@@ -15,32 +15,48 @@ Results
 {% block content %}
 <div class="container px-3 py-5" id="stats">
     <div>
-        <h3 class="px-1">Количество пройденных тестов</h3>
-        <br /> <br />
-    </div>
-        <div class="row text-center">
-            <h4>{{ terms_added }}</h4>
-<!--            <p class="text-muted">добавленных через <a href="/add-term">форму добавления термина</a></p>-->
-        </div>
-    </div>
-    <div>
         <h3 class="px-3">Результаты</h3>
         <br /> <br />
     </div>
     <div class="row text-center">
-        <div class="col-md-4">
-            <h4>{{ words_avg }}</h4>
+        <div class="col d-flex" style="flex-direction: column;">
+            <h4 id="total">0</h4>
+            <br />
+            <p class="text-muted">итоговый балл</p>
+        </div>
+        <div class="col d-flex" style="flex-direction: column;">
+            <h4 id="avg">0</h4>
+            <br />
             <p class="text-muted">средний балл</p>
         </div>
-        <div class="col-sm-4">
-            <h4>{{ words_max }}</h4>
+        <div class="col d-flex" style="flex-direction: column;">
+            <h4 id="maximum">0</h4>
+            <br />
             <p class="text-muted">максимум</p>
         </div>
-        <div class="col-sm-4">
-            <h4>{{ words_min }}</h4>
+        <div class="col d-flex" style="flex-direction: column;">
+            <h4 id="minimum">0</h4>
+            <br />
             <p class="text-muted">минимум</p>
         </div>
     </div>
+    <script>
+            let user = sessionStorage.getItem('user_login');
+            sessionStorage.setItem('aaa', user);
+            const total = document.getElementById('total');
+            const avg = document.getElementById('avg');
+            const maximum = document.getElementById('maximum');
+            const minimum = document.getElementById('minimum');
+            {% for user_id, summary, average, maximum, minimum in results %}
+            if ('{{ user_id }}' === sessionStorage.getItem('user_login')){
+                alert(user)
+                total.innerHTML = '{{ summary }}';
+                avg.innerHTML = '{{ average }}';
+                maximum.innerHTML = '{{ maximum }}';
+                minimum.innerHTML = '{{ minimum }}';
+            }
+            {% endfor %}
+    </script>
 </div>
 {% endblock %}
 

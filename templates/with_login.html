@@ -26,8 +26,8 @@
                 <p class="col-md-8 fs-4">{% block page-lead %}{% endblock %}</p>
             </div>
         </div>
-        <form method="post">
-            <h3 style="font-family: Bookman;">Ваши контактные данные</h3>
+        <form method="post" id="usr_pwd">
+            <h3 style="font-family: Bookman;">Пожалуйста, выполните вход, чтобы продолжить</h3>
             <div class="row px-5 py-2">
                 <div class="col-md-6">
                     <label for="login" style="font-family: Bookman;">Логин:</label>
@@ -66,6 +66,22 @@
                         console.error(`Error: ${err}`);
                         alert('Unknown server error')
                       }
+                    });
+                </script>
+                <script src="https://code.jquery.com/jquery-3.5.1.js"
+                        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+                        crossorigin="anonymous"></script>
+                <script type="text/javascript">
+                $(document).on('submit','#usr_pwd',function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type:'POST',
+                        url:'',
+                        data:{},
+                        success:function(){
+                              //alert('Saved');
+                                }
+                        })
                     });
                 </script>
             </div>
