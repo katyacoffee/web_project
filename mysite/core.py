@@ -87,6 +87,12 @@ def get_lessons():
     return res
 
 
+def new_user(user: str, pwd: str):
+    f = open(users_path, 'a')
+    f.write(user + sep + pwd)
+    f.close()
+
+
 def get_users() -> {str: str}:
     f = open(users_path, 'r')
     res = {}
@@ -96,6 +102,13 @@ def get_users() -> {str: str}:
         if len(line_data) != 2:
             continue
         res[line_data[0]] = line_data[1]
+    return res
+
+
+def get_all_logins() -> list[str]:
+    res = []
+    for user in get_users().keys():
+        res.append(user)
     return res
 
 

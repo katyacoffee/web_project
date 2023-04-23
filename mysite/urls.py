@@ -31,4 +31,6 @@ urlpatterns = [
     path('test', views.test),
     path('send-answers', views.send_answers),
     path('submit-login', views.submit_login),
+    path('sign_in', views.sign_in),
+    path('submit-register', views.submit_register),
 ]

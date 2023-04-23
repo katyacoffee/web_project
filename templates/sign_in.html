@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'fav_.png' %}"/>
+    <link rel="apple-touch-icon" href="{% static 'fav_.png' %}" >
+    <title>Регистрация</title>
+     <!-- CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<main>
+    <div class="container">
+        <header class="border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <div class="fs-2 mb-3">
+                    <img src="{% static 'Flag.svg' %}" alt="Изучение английского языка" width="32" height="32"/>
+                    <span>Изучение английского языка</span>
+                </div>
+            </a>
+        </header>
+        <div class="p-5 mb-4 bg-light rounded-3" id="title-box">
+            <div class="container-fluid py-5">
+                <h1 class="display-1 fw-bold">Регистрация</h1>
+            </div>
+        </div>
+        <form method="post" id="usr_pwd">
+            <h3 style="font-family: Bookman;">Пожалуйста, зарегистрируйтесь</h3>
+            <div class="row px-5 py-2 row-cols-1 row-cols-lg-1">
+                <div class="fs-1">
+                    <label for="login" style="font-family: Bookman; font-size: 25px">Логин:</label>
+                    <input type="text" class="form-control input-lg" name="login" id="login" placeholder="ivan111" value required>
+                </div>
+                <div class="fs-1">
+                    <label for="password" style="font-family: Bookman; font-size: 25px">Пароль:</label>
+                    <input type="password" class="form-control input-lg" name="password" id="password" maxlength="20" placeholder="********" value required>
+                </div>
+                <div class="fs-1">
+                    <label for="confirm_password" style="font-family: Bookman; font-size: 25px">Подтвердите пароль:</label>
+                    <input type="password" class="form-control input-lg" name="confirm_password" id="confirm_password" maxlength="20" placeholder="********" value required>
+                </div>
+            </div>
+            <div class="row px-5 py-2">
+                <button id="send-pwd" type="submit" class="btn btn-info" style="font-family: Bookman;">
+                    Sign in
+                </button>
+                <script>
+                    const button = document.getElementById('send-pwd');
+
+                    button.addEventListener('click', async _ => {
+                      try {
+                        var login=document.getElementById('login').value;
+                        var pwd=document.getElementById('password').value;
+                        var cpwd=document.getElementById('confirm_password').value;
+                        if (pwd == cpwd) {
+                            let response = await fetch('submit-register', {
+                              method: 'post',
+                              body: JSON.stringify({
+                                title: login,
+                                body: pwd,
+                              })
+                            });
+                            let text = await response.text();
+                            if (text == "TRUE") {
+                                sessionStorage.setItem('user_login', login);
+                                text = "Пользователь '" + login + "' упсешно зарегистирован."
+                            }
+                            alert(text)
+                        } else {
+                            alert("Пароли не совпадают!")
+                        }
+                      } catch(err) {
+                        console.error(`Error: ${err}`);
+                        alert('Unknown server error')
+                      }
+                    });
+                </script>
+                <script src="https://code.jquery.com/jquery-3.5.1.js"
+                        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+                        crossorigin="anonymous"></script>
+                <script type="text/javascript">
+                $(document).on('submit','#usr_pwd',function(e){
+                    e.preventDefault();
+                    $.ajax({
+                        type:'POST',
+                        url:'',
+                        data:{},
+                        success:function(){
+                              //alert('Saved');
+                                }
+                        })
+                    });
+                </script>
+            </div>
+        </form>
+        <footer class="footer pt-3 mt-4 text-muted border-top">© 2023</footer>
+    </div>
+</main>
+</body>
+</html>

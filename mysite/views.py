@@ -120,6 +120,28 @@ def submit_login(request):
     return HttpResponse("TRUE")
 
 
+def submit_register(request):
+    data = json.loads(request.body)
+    user = data['title']
+    pwd = data['body']
+    if user == "":
+        return HttpResponse("Имя пользователя не заполнено.")
+    print(user, pwd)
+    #TODO!!!!
+    correct_pwd = core.get_password(user)
+    if correct_pwd is None:
+        return HttpResponse("Пользователь '" + user +
+                            "' не найден. Пожалуйста, зарегистрируйтесь.")
+    elif correct_pwd != pwd:
+        return HttpResponse("Неверный пароль для пользователя '" + user + "'!")
+    return HttpResponse("TRUE")
+
+
 def show_stats(request):
     all_res = core.get_all_stats()
     return render(request, "stats.html", context={"results": all_res})
+
+
+def sign_in(request):
+    users = core.get_all_logins()
+    return render(request, "sign_in.html", context={"users": users})
