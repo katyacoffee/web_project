@@ -15,7 +15,9 @@ Results
 {% block content %}
 <div class="container px-3 py-5" id="stats">
     <div>
-        <h3 class="px-3">Результаты</h3>
+        <h3 class="px-3" id="result_head">Результаты</h3>
+        <h6 class="px-3">За каждый урок можно набрать до 100 баллов</h6>
+        <h6 class="px-3">Итоговый балл - сумма всех баллов по урокам</h6>
         <br /> <br />
     </div>
     <div class="row text-center">
@@ -41,15 +43,15 @@ Results
         </div>
     </div>
     <script>
-            let user = sessionStorage.getItem('user_login');
-            sessionStorage.setItem('aaa', user);
             const total = document.getElementById('total');
             const avg = document.getElementById('avg');
             const maximum = document.getElementById('maximum');
             const minimum = document.getElementById('minimum');
+            const res_head = document.getElementById('result_head');
+            let user = sessionStorage.getItem('user_login')
+            res_head.innerHTML = 'Результаты пользователя ' + user
             {% for user_id, summary, average, maximum, minimum in results %}
-            if ('{{ user_id }}' === sessionStorage.getItem('user_login')){
-                alert(user)
+            if ('{{ user_id }}' === user){
                 total.innerHTML = '{{ summary }}';
                 avg.innerHTML = '{{ average }}';
                 maximum.innerHTML = '{{ maximum }}';

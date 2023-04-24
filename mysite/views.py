@@ -127,13 +127,12 @@ def submit_register(request):
     if user == "":
         return HttpResponse("Имя пользователя не заполнено.")
     print(user, pwd)
-    #TODO!!!!
-    correct_pwd = core.get_password(user)
-    if correct_pwd is None:
-        return HttpResponse("Пользователь '" + user +
-                            "' не найден. Пожалуйста, зарегистрируйтесь.")
-    elif correct_pwd != pwd:
-        return HttpResponse("Неверный пароль для пользователя '" + user + "'!")
+    all_users = core.get_all_logins()
+    if user in all_users:
+        return HttpResponse("Пользователь уже зарегистрирован.")
+    if len(pwd) < 3:
+        return HttpResponse("Пароль слишком короткий.")
+    core.new_user(user, pwd)
     return HttpResponse("TRUE")
 
 

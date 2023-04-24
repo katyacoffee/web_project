@@ -89,7 +89,7 @@ def get_lessons():
 
 def new_user(user: str, pwd: str):
     f = open(users_path, 'a')
-    f.write(user + sep + pwd)
+    f.write(user + sep + pwd + '\n')
     f.close()
 
 

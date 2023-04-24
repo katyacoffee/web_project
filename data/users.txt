@@ -1,3 +1,6 @@
 admin|12345
 guest|111
 alice|abcd1
+Masha|123aaa
+Sasha|1234
+Alex|12345

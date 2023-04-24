@@ -65,6 +65,9 @@
                             if (text == "TRUE") {
                                 sessionStorage.setItem('user_login', login);
                                 text = "Пользователь '" + login + "' упсешно зарегистирован."
+                                document.getElementById('login').value = "";
+                                document.getElementById('password').value = "";
+                                document.getElementById('confirm_password').value = "";
                             }
                             alert(text)
                         } else {
