@@ -5,19 +5,19 @@ Take the test
 {% endblock %}
 
 {% block page-title %}
-<p style="font-size:50px; font-family: Bookman;">Тестирование </p>
+<p style="font-size:50px;">Тестирование </p>
 {% endblock %}
 
 {% block page-lead %}
 <!--Список всех уроков, слов и их переводов-->
-<p class="fst-italic" style="font-size:25px; font-family: Bookman;">Для самопроверки Вы можете пройти тест </p>
+<p class="fst-italic" style="font-size:25px;">Для самопроверки Вы можете пройти тест </p>
 {% endblock %}
 
 {% block content %}
-<p id = "Number" class = "Number" style="font-size:40px; font-family: Bookman;"></p>
-<a href="/lessons" class="btn btn-light" style="background-color: #E8DAEF; color: black; font-family: Bookman;">К списку уроков</a>
+<p id = "Number" class = "Number" style="font-size:40px;"></p>
+<a href="/lessons" class="btn btn-light" style="background-color: #E8DAEF; color: black;">К списку уроков</a>
 <br /> <br />
-<h4 style="font-family: Bookman;">Введите слова, соответствующие переводам, а затем нажмите "Отправить ответы"</h4>
+<h4>Введите слова, соответствующие переводам, а затем нажмите "Отправить ответы"</h4>
 <br /> <br />
 <br /> <br />
 <script>
@@ -57,7 +57,7 @@ Take the test
             sessionStorage.setItem('user_login', '')
         </script>
         <div class="row px-5 py-2">
-            <button type="submit" class="btn btn-info" formaction="/send-answers" style="font-family: Bookman;">Отправить ответы</button>
+            <button type="submit" class="btn btn-info" formaction="/send-answers">Отправить ответы</button>
         </div>
     </form>
 </div>

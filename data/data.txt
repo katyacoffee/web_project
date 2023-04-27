@@ -14,3 +14,4 @@
 2|Nature|Forest|Лес|pic_forest.jpg|
 3|Body|Nose|Нос|NONE|
 2|Nature|Sea|Море|NONE|
+4|Food|Hamburger|Гамбургер|NONE|
