@@ -12,11 +12,6 @@ def index(request):
     return render(request, "index.html")
 
 
-def terms_list(request):
-    terms = terms_work.get_terms_for_table()
-    return render(request, "term_list.html", context={"terms": terms})
-
-
 def lessons_list(request):
     words = core.cards_to_tuple(core.get_all_cards())
     return render(request, "lessons_list.html", context={"words": words})
