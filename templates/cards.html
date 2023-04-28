@@ -15,103 +15,129 @@ Cards
 
 {% block content %}
 
-<div class="container px-4 py-5" id="project-contents">
+<style>
+    .my_container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 650px;
+    }
+</style>
+<div class="my_container" id="project-contents">
     <p id = "Number" class = "Number" style="font-size:50px;"></p>
     <a href="/lessons" class="btn btn-light" style="background-color: #E8DAEF; color: black">К списку уроков</a>
     <script>
         const num_lesson = document.getElementById('Number');
         num_lesson.textContent = 'Урок №' + sessionStorage.getItem('lesson_id');
     </script>
-    <div class="container bs-docs-container" id="lesson-contents">
+    <style>
+         .card_word {
+             /*display: inline-block;*/
+             display: flex;
+             border-radius: 30px;
+             height: 400px;
+             width: 650px;
+             //left: 50%;
+             background: #63a9db;
+             transition: all 0.6s;
+             animation-duration: 0.5s;
+             align-items: center;
+             flex-shrink: 2;
+             text-decoration:none;
+             color:white;
+             vertical-align: middle;
+             border: none;
+         }
+         .card_word:hover {
+             background: #63dbcd;
+             border-radius: 30px;
+             left: 50%;
+             flex-shrink: 2;
+         }
+         .lesson_card {
+             /*display: inline-block;*/
+             display: flex;
+             left: 50%;
+             border-radius: 30px;
+             vertical-align: middle;
+             align-items: center;
+             justify-content: center;
+             //top: 50%;
+             transform: translateY(300%);
+             line-height: normal;
+             font-size: 40px;
+             flex-shrink: 2;
+         }
+         .word_c {
+           display: hidden;
+           //align-items: stretch;
+           align-items: center;
+           border: none;
+         }
+         .card_block {
+           display: flex;
+           flex-direction: column;
+           align-items: flex-start;
+           border: none;
+         }
+         .card {
+            display: hidden;
+             //position: absolute;
+             //left: 50%;
+             height: 400px;
+             width: 650px;
+             border: none;
+         }
+
+         a.card_translation_word {
+               display: none;
+               border-radius: 30px;
+               height: 400px;
+               width: 650px;
+               background: #63a9db;
+               left: 50%;
+               transition: all 0.6s;
+               animation-duration: 0.5s;
+               align-items: center;
+               flex-shrink: 2;
+               text-decoration:none;
+               color:white;
+           }
+           a.card_translation_word:hover {
+               /*background: #99FFCC;*/
+               background: #63dbcd;
+               border-radius: 30px;
+               left: 50%;
+               flex-shrink: 2;
+           }
+           h3.lesson_card_ {
+               /*display: inline-block;*/
+               display: flex;
+               flex-shrink: 0;
+               border-radius: 30px;
+               vertical-align: middle;
+               align-items: center;
+               top: 50%;
+               transform: translateY(50%);
+               justify-content: center;
+               line-height: normal;
+               font-size: 40px;
+               flex-shrink: 2;
+           }
+    </style>
+    <div class="card_block" id="lesson-contents">
         {% for id, topic, word, translation, pic in words %}
-        <style>
-             div.block_{{ word }} {
-                //position: absolute;
-                //left: 50%;
-                height: 400px;
-                width: 650px;
-             }
-        </style>
-        <div id="card_block_{{ word }}_{{ id }}" class="row g-4 py-5 row-cols-1 row-cols-lg-1">
-            <style>
-                    a.card_{{ word }} {
-                        /*display: inline-block;*/
-                        display: flex;
-                        border-radius: 30px;
-                        height: 400px;
-                        width: 650px;
-                        left: 50%;
-                        transform: translateX(50%);
-                        background: #63a9db;
-                        transition: all 0.6s;
-                        animation-duration: 0.5s;
-                        align-items: center;
-                        flex-shrink: 2;
-                    }
-                    a.card_{{ word }}:hover {
-                        background: #63dbcd;
-                        border-radius: 30px;
-                        left: 50%;
-                        flex-shrink: 2;
-                    }
-                    h3.lesson_card {
-                        /*display: inline-block;*/
-                        display: flex;
-                        left: 50%;
-                        border-radius: 30px;
-                        vertical-align: middle;
-                        align-items: center;
-                        justify-content: center;
-                        top: 50%;
-                        transform: translateY(300%);
-                        line-height: normal;
-                        font-size: 40px;
-                        flex-shrink: 2;
-                    }
-            </style>
-            <div id="block_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
-                <a class = "card_{{ word }}" id = "card_{{ word }}" style="text-decoration:none; color:white; vertical-align: middle; flex-shrink: 2;">
-                    <h3 class = "lesson_card" id = "card">{{ word }}</h3>
+        <div id="br_{{ word }}_{{ id }}">
+            <br>
+        </div>
+        <div id="card_block_{{ word }}_{{ id }}" class="card">
+            <div id="block_{{ word }}" class="word_c">
+                <a id = "card_{{ word }}" class = "card_word">
+                    <h3 id = "card" class = "lesson_card">{{ word }}</h3>
                 </a>
             </div>
-            <style>
-                    a.card_translation_{{ word }} {
-                        display: none;
-                        border-radius: 30px;
-                        height: 400px;
-                        width: 650px;
-                        background: #63a9db;
-                        left: 50%;
-                        transform: translateX(50%);
-                        transition: all 0.6s;
-                        animation-duration: 0.5s;
-                        align-items: center;
-                        flex-shrink: 2;
-                    }
-                    a.card_translation_{{ word }}:hover {
-                        /*background: #99FFCC;*/
-                        background: #63dbcd;
-                        border-radius: 30px;
-                        left: 50%;
-                        flex-shrink: 2;
-                    }
-                    h3.lesson_card_ {
-                        /*display: inline-block;*/
-                        display: flex;
-                        flex-shrink: 0;
-                        border-radius: 30px;
-                        vertical-align: middle;
-                        align-items: center;
-                        top: 50%;
-                        transform: translateY(50%);
-                        justify-content: center;
-                        line-height: normal;
-                        font-size: 40px;
-                        flex-shrink: 2;
-                    }
-            </style>
-            <div id="block_translation_{{ word }}" class="col" style = "align-items: center; vertical-align: middle; justify-content: center; left: 50%">
-                <a class = "card_translation_{{ word }}" id = "card_translation_{{ word }}" style="text-decoration:none; color:white; flex-shrink: 2;">
+            <div id="block_translation_{{ word }}" class="translation_c">
+                <a id = "card_translation_{{ word }}" class = "card_translation_word">
                     <h3 class = "lesson_card_" id = "card_translation">{{ translation }}</h3>
                     <picture>
                         <img src="/static/{{ pic }}" alt="" width="300" height="200" style="object-position=center; margin: auto; flex-shrink: 0;
@@ -151,8 +177,10 @@ Cards
         <script>
             {% for id, topic, word, translation, pic in words %}
             const card_block_{{ word }}_{{ id }} = document.getElementById('card_block_{{ word }}_{{ id }}');
+            const br_{{ word }}_{{ id }} = document.getElementById('br_{{ word }}_{{ id }}');
             if ({{ id }} != sessionStorage.getItem('lesson_id')){
                 card_block_{{ word }}_{{ id }}.style.display = 'none';
+                br_{{ word }}_{{ id }}.style.display = 'none';
             }
             {% endfor %}
         </script>
