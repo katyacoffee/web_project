@@ -81,11 +81,6 @@ def send_answers(request):
         points = 0
         for card in cards_for_lesson:
             answer = request.POST.get("answer_" + card.word)
-            # if len(answer) == 0:
-            #     context["success"] = False
-            #     context["comment"] = "Слово должно быть не пустым. Вы забыли перевод '" +\
-            #                          card.translation + "'."
-            #     break
             if answer.lower() == card.word.lower():
                 points += 1
         if context["success"]:

@@ -57,34 +57,44 @@
                             body: pwd,
                           })
                         });
+                        console.log(response)
                         let text = await response.text();
+                        console.log(text)
                         if (text == "TRUE") {
                             sessionStorage.setItem('user_login', login);
                             text = "Успешный вход для '" + login + "'."
                         }
                         alert(text)
                       } catch(err) {
-                        console.error(`Error: ${err}`);
-                        alert('Unknown server error')
+                            try {
+                            var login=document.getElementById('login').value;
+                            var pwd=document.getElementById('password').value;
+                            let response = await fetch('submit-login', {
+                              method: 'post',
+                              body: JSON.stringify({
+                                title: login,
+                                body: pwd,
+                              })
+                            });
+                            console.log(response)
+                            let text = await response.text();
+                            console.log(text)
+                            if (text == "TRUE") {
+                                sessionStorage.setItem('user_login', login);
+                                text = "Успешный вход для '" + login + "'."
+                            }
+                            alert(text)
+                          } catch(err) {
+                            console.error(`Error: ${err}`);
+                            alert('Unknown server error')
+                          }
                       }
                     });
                 </script>
                 <script src="https://code.jquery.com/jquery-3.5.1.js"
                         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-                        crossorigin="anonymous"></script>
-<!--                <script type="text/javascript">-->
-<!--                $(document).on('submit','#usr_pwd',function(e){-->
-<!--                    e.preventDefault();-->
-<!--                    $.ajax({-->
-<!--                        type:'POST',-->
-<!--                        url:'',-->
-<!--                        data:{},-->
-<!--                        success:function(){-->
-<!--                              //alert('Saved');-->
-<!--                                }-->
-<!--                        })-->
-<!--                    });-->
-<!--                </script>-->
+                        crossorigin="anonymous">
+                </script>
             </div>
         </form>
         <br /> <br />
