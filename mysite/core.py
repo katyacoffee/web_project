@@ -1,5 +1,6 @@
 from dataclasses import dataclass
-import os
+import pathlib
+from pathlib import Path
 
 
 @dataclass
@@ -13,10 +14,11 @@ class Card:
 
 no_pic = 'NONE'
 sep = '|'
-# TODO: fix to relpath
-data_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/data.txt'
-res_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/results.txt'
-users_path = '/Users/ekaterinakozakova/Desktop/dev/mysite/data/users.txt'
+dir_path = pathlib.Path.cwd()
+data_path = Path(dir_path, 'mysite', 'data', 'data.txt')
+res_path = Path(dir_path, 'mysite', 'data', 'results.txt')
+users_path = Path(dir_path, 'mysite', 'data', 'users.txt')
+print(str(data_path))
 
 
 def get_cards(lesson_id: int) -> list[Card]:
