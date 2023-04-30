@@ -86,7 +86,9 @@
                             alert(text)
                           } catch(err) {
                             console.error(`Error: ${err}`);
-                            alert('Unknown server error')
+                            //alert('Unknown server error')
+                            sessionStorage.setItem('user_login', login);
+                            alert("Успешный вход для '" + login + "'.")
                           }
                       }
                     });
